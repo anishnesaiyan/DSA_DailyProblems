@@ -88,6 +88,25 @@ public class Day2_Add_Digit_LC_258 {
         num %= 9;
         return num == 0 ? 9 : num;
     }
+	
+	//Jotheesh method using % split
+	// If num>=10 -- pass it to the digit add method and sum the individual digits
+	//	if num<10 - print
+		//or else send it again to digit add method
+	static int add(int num) {
+		while (num >= 10) {
+			num = digitAdd(num);
+		}
+		return num;
+	}
+	public static int digitAdd(int temp) {
+		int sum = 0;
+		while (temp > 0) {
+			sum += temp % 10;
+			temp = temp / 10;
+		}
+		return sum;
+	}
 }
 
 
