@@ -47,10 +47,17 @@ public static boolean isPalindrome(ListNode head) {
 			if(next!=null) {
 			next=next.next;}			
 	}
+	while(previous!=null) {
+		int val1=previous.val;
+		int val2=temp.val;
+		
+		if(val1!=val2) return false;
+			
+		previous=previous.next;
+		temp=temp.next;
 
-	//if(previous.toString())
-		return true;
-	//else return false;
+	}
+	return true;
 	
     }
 

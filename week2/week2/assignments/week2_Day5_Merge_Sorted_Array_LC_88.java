@@ -38,7 +38,7 @@ public class week2_Day5_Merge_Sorted_Array_LC_88 {
 //		int[] nums1 = {1}, nums2 = {};
 //		int m = 1, n = 0;
 		//System.out.println(nums2.length);
-		int[] nums1 = {1,2,3,0,0,0}, nums2 = {2,5,6};
+		int[] nums1 = {4,5,6,0,0,0}, nums2 = {1,2,3};
 		int m = 3, n = 3;
 		merge(nums1,m,nums2,n);
  
@@ -47,12 +47,17 @@ public class week2_Day5_Merge_Sorted_Array_LC_88 {
 
 	@Test // Edge Case
 	public void example2() {
-
+		int[] nums1 = {1}, nums2 = {};
+		int m = 1, n = 0;
+		merge(nums1,m,nums2,n);
 	}
 
 	@Test // negative
 	public void example3() {
-	
+		
+		int[] nums1 = {0}, nums2 = {1};
+		int m = 1, n = 1;
+		merge(nums1,m,nums2,n);
 	}
 
 	/*
@@ -66,13 +71,45 @@ public class week2_Day5_Merge_Sorted_Array_LC_88 {
 	}
 	/*
 	 * Pseudo code here 1. Brute force
-	 * 1. Create a new array of size (sum of m and n)
-	 * 2. Loop through each array value
-	 * 3.		
+	 * 1. Take two pointer at both array index
+	 * 2.  if i<=j moce i++
+	 * 3.	if i>j swap i and j and move i++
+	 * 		
 	 */
-public void merge(int[] nums1, int m, int[] nums2, int n) {
-    
+public static void merge(int[] nums1, int m, int[] nums2, int n) {
 		
-}
+	
+	if(m==1 && n==0) {
+		System.out.println(Arrays.toString(nums1));
+	}
+	else if(m==1 && n==1) {
+		
+		nums1[0]=nums2[0];
+		System.out.println(Arrays.toString(nums1));
+		
+	}
+	else {
+		//int[] nums1 = {4,5,6,0,0,0}, nums2 = {1,2,3};
+        int i=m-1;
+        int j=n-1;
+        int k=m+n-1;
+        while(j>=0) {
+        	
+        	if(nums2[j]>=nums1[i]) {
+        		nums1[k]=nums2[j];
+        		j--;
+        		k--;
+        		
+        	}
+        	else if(nums2[j]<nums1[i]) {
+        		nums1[k]=nums1[i];
+        		i--;
+        		k--;
+        	}
+        	
+        	
+        }		
+        System.out.println(Arrays.toString(nums1));
+    }}
 }
 
